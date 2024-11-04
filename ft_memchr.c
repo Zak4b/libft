@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:01 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 14:09:01 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/04 15:14:42 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // scans n bytes of the memory area pointed to by s for the first instance of c.
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t			i;
+	size_t	i;
 	char	*ptr;
 
 	ptr = (char *)s;
