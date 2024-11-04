@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:09:44 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 15:09:45 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/04 16:40:28 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	ft_lstlast(*lst)->next = new;
+	if (*lst == NULL)
+		*lst = new;
+	else
+		ft_lstlast(*lst)->next = new;
 }
