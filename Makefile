@@ -37,7 +37,18 @@ SOURCES = ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c
 
+BONUS_SOURCES = ft_lstnew_bonus.c \
+		ft_lstadd_front_bonus.c \
+		ft_lstsize_bonus.c \
+		ft_lstlast_bonus.c \
+		ft_lstadd_back_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstdelone_bonus.c \
+		ft_lstclear_bonus.c \
+		ft_lstiter_bonus.c
+
 OBJS = $(SOURCES:.c=.o)
+BONUS_OBJS = $(BONUS_SOURCES:.c=.o)
 
 %.o: %.c
 	cc $(FLAGS) -c $< -o $@
@@ -45,10 +56,13 @@ OBJS = $(SOURCES:.c=.o)
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
+bonus: $(NAME)  $(OBJS) $(BONUS_OBJS)
+	ar -rcs $(NAME)  $(OBJS) $(BONUS_OBJS)
+
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -f $(NAME)
