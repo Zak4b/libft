@@ -24,7 +24,8 @@ SOURCES = ft_isalpha.c \
 		ft_memmove.c \
 		ft_memchr.c \
 		ft_atoi.c \
-		ft_calloc.c
+		ft_calloc.c \
+		ft_substr.c
 
 OBJS = $(SOURCES:.c=.o)
 
