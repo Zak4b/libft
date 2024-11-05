@@ -6,11 +6,18 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:20 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 14:36:21 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/05 12:17:32 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	free_split(char **array, int size)
+{
+	while (size-- > 0)
+		free(array[size]);
+	free(array);
+}
 
 static int	count_word(char const *str, char c)
 {
@@ -29,45 +36,50 @@ static int	count_word(char const *str, char c)
 	return (wc);
 }
 
-static char	*ft_strncpy(char *dest, const char *src, int n)
+static char	*ft_strndup(const char *src, int n)
 {
-	int	i;
+	int		i;
+	char	*dup;
+
+	dup = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (dup == NULL)
+		return (NULL);
 
 	i = 0;
 	while (i < n && src[i])
 	{
-		dest[i] = src[i];
+		dup[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	dup[i] = '\0';
+	return (dup);
 }
 
 char	**ft_split(char const *str, char c)
 {
-	int		i;
-	int		j;
+	char	*start;
 	int		k;
 	char	**string_array;
 
-	string_array = malloc(sizeof(char *) * (count_word(str, c) + 1));
-	i = 0;
-	j = 0;
+	if ((string_array = malloc(sizeof(char *) * (count_word(str, c) + 1))) == NULL)
+		return (NULL);
 	k = 0;
-	while (str[i])
+	while (*str)
 	{
-		while (str[i] && str[i] == c)
-			i++;
-		j = i;
-		while (str[i] && str[i] != c)
-			i++;
-		if (i > j)
+		while (*str && *str == c)
+			str++;
+		start = (char *)str;
+		while (*str && *str != c)
+			str++;
+		if (str > start)
 		{
-			string_array[k] = malloc(sizeof(char) * ((i - j) + 1));
-			ft_strncpy(string_array[k++], &str[j], i - j);
+			if ((string_array[k++] = ft_strndup(start, str - start))==NULL)
+			{
+				free_split(string_array, k);
+				return (NULL);
+			}
 		}
 	}
 	string_array[k] = NULL;
 	return (string_array);
 }
-// free on element malloc error
