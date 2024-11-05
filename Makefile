@@ -56,8 +56,8 @@ BONUS_OBJS = $(BONUS_SOURCES:.c=.o)
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-bonus: $(NAME)  $(OBJS) $(BONUS_OBJS)
-	ar -rcs $(NAME)  $(OBJS) $(BONUS_OBJS)
+bonus: $(OBJS) $(BONUS_OBJS)
+	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 all: $(NAME)
 
