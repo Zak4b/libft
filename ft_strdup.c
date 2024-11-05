@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:58:19 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 13:58:19 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/05 09:44:32 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *src)
 	char	*dup;
 
 	dup = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	if (dup == NULL)
+		return (NULL);
 	i = 0;
 	while (src[i])
 	{
