@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:15 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 14:09:15 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/05 09:55:51 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*p_dest;
 	unsigned char	*p_src;
 
+	if (dest == src)
+		return (dest);
 	p_dest = (unsigned char *)dest;
 	p_src = (unsigned char *)src;
 	i = 0;
