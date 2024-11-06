@@ -15,7 +15,7 @@
 // returns a pointer to the last occurrence of the character c in  the  string
 char	*ft_strrchr(const char *s, int c)
 {
-	int	index;
+	size_t	index;
 
 	index = ft_strlen(s);
 	while (index && s[index] != (char)c)

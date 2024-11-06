@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:58 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 14:09:58 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:52:22 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 char	*ft_strnstr(const char *str, const char *needle, size_t n)
 {
 	size_t	i;
-	int		needle_len;
+	size_t	needle_len;
 
-	if (needle == NULL || *needle == '\0')
+	if (*needle == '\0')
 		return ((char *)str);
 	i = 0;
 	needle_len = ft_strlen(needle);
-	if (n < (unsigned int)needle_len)
+	if (n < needle_len)
 		return (NULL);
 	while (str[i] && i < n - needle_len + 1)
 	{

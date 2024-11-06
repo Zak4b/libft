@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:16:30 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 15:16:31 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/06 16:44:21 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strtrim(char const *str, char const *set)
 	start = (char *)str;
 	while (*start && char_in_str(set, *start))
 		start++;
-	if (*(start + 1) == '\0')
+	if (*start == '\0')
 		last_char = start;
 	else
 		last_char = start + ft_strlen(start) - 1;
