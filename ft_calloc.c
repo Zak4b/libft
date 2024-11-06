@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:12:50 by asene             #+#    #+#             */
-/*   Updated: 2024/11/05 14:41:26 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/06 14:54:08 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	*ft_calloc(size_t count, size_t element_size)
 	total_size = count * element_size;
 	if (total_size / count != element_size)
 		return (NULL);
-	ptr = malloc(count * element_size);
+	ptr = malloc(total_size);
 	if (ptr == NULL)
 		return (NULL);
 	else
-		ft_bzero(ptr, count * element_size);
+		ft_bzero(ptr, total_size);
 	return (ptr);
 }
