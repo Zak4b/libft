@@ -18,9 +18,9 @@ char	*ft_strrchr(const char *s, int c)
 	int	index;
 
 	index = ft_strlen(s);
-	while (index && s[index] != c)
+	while (index && s[index] != (char)c)
 		index--;
-	if (s[index] == c)
+	if (s[index] == (char)c)
 		return ((char *)&(s[index]));
 	return (0);
 }
