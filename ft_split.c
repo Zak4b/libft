@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:20 by asene             #+#    #+#             */
-/*   Updated: 2024/11/05 13:31:25 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/06 14:42:27 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_strndup(const char *src, int n)
 	int		i;
 	char	*dup;
 
-	dup = malloc(sizeof(char) * (ft_strlen(src) + 1));
+	dup = malloc(sizeof(char) * (n + 1));
 	if (dup == NULL)
 		return (NULL);
 	i = 0;
