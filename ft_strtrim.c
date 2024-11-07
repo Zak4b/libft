@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:16:30 by asene             #+#    #+#             */
-/*   Updated: 2024/11/06 16:44:21 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/07 15:41:42 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,15 @@ static int	char_in_str(const char *str, char c)
 
 char	*ft_strtrim(char const *str, char const *set)
 {
-	char	*new_str;
-	char	*start;
-	char	*last_char;
+	int		i;
 
-	start = (char *)str;
-	while (*start && char_in_str(set, *start))
-		start++;
-	if (*start == '\0')
-		last_char = start;
+	while (*str && char_in_str(set, *str))
+		str++;
+	if (*str == '\0')
+		i = 0;
 	else
-		last_char = start + ft_strlen(start) - 1;
-	while (last_char > start && char_in_str(set, *last_char))
-		last_char--;
-	new_str = malloc(sizeof(char) * (last_char - start + 2));
-	if (new_str == NULL)
-		return (NULL);
-	ft_strlcpy(new_str, start, last_char - start + 2);
-	return (new_str);
+		i = ft_strlen(str) - 1;
+	while (&(str[i]) > str && char_in_str(set, str[i]))
+		i--;
+	return (ft_substr(str, 0, i + 1));
 }
