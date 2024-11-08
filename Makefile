@@ -14,6 +14,7 @@ SOURCES = ft_isalpha.c \
 		ft_strchr.c \
 		ft_strrchr.c \
 		ft_strdup.c \
+		ft_strndup.c \
 		ft_strlcpy.c \
 		ft_strlcat.c \
 		ft_strnstr.c \

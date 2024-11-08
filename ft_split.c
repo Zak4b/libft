@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:20 by asene             #+#    #+#             */
-/*   Updated: 2024/11/06 14:42:27 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/08 14:04:06 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,6 @@ static int	count_word(char const *str, char c)
 			str++;
 	}
 	return (wc);
-}
-
-static char	*ft_strndup(const char *src, int n)
-{
-	int		i;
-	char	*dup;
-
-	dup = malloc(sizeof(char) * (n + 1));
-	if (dup == NULL)
-		return (NULL);
-	i = 0;
-	while (i < n && src[i])
-	{
-		dup[i] = src[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
 }
 
 char	**ft_split(char const *str, char c)

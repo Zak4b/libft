@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:22 by asene             #+#    #+#             */
-/*   Updated: 2024/11/05 09:55:43 by asene            ###   ########.fr       */
+/*   Updated: 2024/11/08 13:35:46 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	p_dest = (unsigned char *)dest;
 	p_src = (unsigned char *)src;
 	if (dest <= src)
-	{
-		i = 0;
-		while (i < n)
-		{
-			p_dest[i] = p_src[i];
-			i++;
-		}
-	}
+		ft_memcpy(dest, src, n);
 	else
 	{
 		i = n;
