@@ -17,10 +17,13 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	index;
 
-	index = ft_strlen(s);
-	while (index && s[index] != (char)c)
-		index--;
-	if (s[index] == (char)c)
-		return ((char *)&(s[index]));
-	return (0);
+	if (s != NULL)
+	{
+		index = ft_strlen(s);
+		while (index && s[index] != (char)c)
+			index--;
+		if (s[index] == (char)c)
+			return ((char *)&(s[index]));
+	}
+	return (NULL);
 }

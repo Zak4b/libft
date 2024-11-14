@@ -15,9 +15,12 @@
 // returns a pointer to the first occurrence of the character c in the string s
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != (char)c)
-		s++;
-	if (*s == (char)c)
-		return ((char *)s);
+	if (s != NULL)
+	{
+		while (*s && *s != (char)c)
+			s++;
+		if (*s == (char)c)
+			return ((char *)s);
+	}
 	return (NULL);
 }
