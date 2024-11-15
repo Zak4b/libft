@@ -1,6 +1,6 @@
 NAME = libft.a
-
 FLAGS = -Wall -Wextra -Werror
+OBJDIR = obj
 
 SOURCES = ft_isalpha.c \
 		ft_isdigit.c \
@@ -36,9 +36,8 @@ SOURCES = ft_isalpha.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c
-
-BONUS_SOURCES = ft_lstnew_bonus.c \
+		ft_putnbr_fd.c \
+		 ft_lstnew_bonus.c \
 		ft_lstadd_front_bonus.c \
 		ft_lstsize_bonus.c \
 		ft_lstlast_bonus.c \
@@ -47,24 +46,27 @@ BONUS_SOURCES = ft_lstnew_bonus.c \
 		ft_lstdelone_bonus.c \
 		ft_lstclear_bonus.c \
 		ft_lstiter_bonus.c \
-		ft_lstmap_bonus.c
+		ft_lstmap_bonus.c \
+		ft_printf.c \
+		ft_printf_utils.c \
+		ft_printf_conversions.c \
+		get_next_line.c
 
-OBJS = $(SOURCES:.c=.o)
-BONUS_OBJS = $(BONUS_SOURCES:.c=.o)
-
-%.o: %.c
-	cc $(FLAGS) -c $< -o $@
+OBJS = $(addprefix $(OBJDIR)/, $(SOURCES:.c=.o))
 
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	ar -rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	cc $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
