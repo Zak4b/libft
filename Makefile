@@ -58,10 +58,10 @@ $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
 $(OBJDIR):
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)/%.o: %.c | $(OBJDIR)
-	cc $(FLAGS) -c $< -o $@
+	@cc $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
