@@ -6,11 +6,12 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:22 by asene             #+#    #+#             */
-/*   Updated: 2024/11/08 13:35:46 by asene            ###   ########.fr       */
+/*   Updated: 2024/12/22 00:52:43 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdint.h>
 
 // copies n bytes from memory area src to memory area dest. The memory areas may
 // overlap: copying takes place as though the bytes in src are first copied into
@@ -18,21 +19,23 @@
 // then copied from the temporary array to dest. returns a pointer to dest.
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*p_dest;
-	unsigned char	*p_src;
+	uint8_t	*d;
+	uint8_t	*s;
 
 	if (dest == src)
 		return (dest);
-	p_dest = (unsigned char *)dest;
-	p_src = (unsigned char *)src;
 	if (dest <= src)
-		ft_memcpy(dest, src, n);
-	else
+		return (ft_memcpy(dest, src, n));
+	d = (uint8_t *)dest + n;
+	s = (uint8_t *)src + n;
+	while (n >= 8)
 	{
-		i = n;
-		while (i-- > 0)
-			p_dest[i] = p_src[i];
+		d -= 8;
+		s -= 8;
+		*(uint64_t *)d = *(const uint64_t *)s;
+		n -= 8;
 	}
+	while (n-- > 0)
+		*--d = *--s;
 	return (dest);
 }

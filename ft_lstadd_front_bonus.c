@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:04:36 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 15:04:36 by asene            ###   ########.fr       */
+/*   Updated: 2024/12/21 23:44:24 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
 	new->next = *lst;
 	*lst = new;
 }

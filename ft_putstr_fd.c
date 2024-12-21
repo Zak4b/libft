@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:47:24 by asene             #+#    #+#             */
-/*   Updated: 2024/11/04 14:47:25 by asene            ###   ########.fr       */
+/*   Updated: 2024/12/21 23:47:58 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	ft_putstr_fd(char *str, int fd)
 {
-	while (*str)
-		write(fd, str++, 1);
+	write(fd, str, ft_strlen(str));
 }
