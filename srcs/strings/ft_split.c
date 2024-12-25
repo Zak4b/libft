@@ -6,18 +6,20 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:20 by asene             #+#    #+#             */
-/*   Updated: 2024/12/25 19:33:04 by asene            ###   ########.fr       */
+/*   Updated: 2024/12/25 20:53:08 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static void	*free_split(char **array, int size)
+void	free_split(char **split)
 {
-	while (size-- > 0)
-		free(array[size]);
-	free(array);
-	return (NULL);
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }
 
 static int	count_word(char const *str, char c)
@@ -58,7 +60,7 @@ char	**ft_split(char const *str, char c)
 		{
 			array[k] = ft_strndup(start, str - start);
 			if (array[k++] == NULL)
-				return (free_split(array, k));
+				return (free_split(array), NULL);
 		}
 	}
 	array[k] = NULL;
