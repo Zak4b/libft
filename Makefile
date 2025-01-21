@@ -24,6 +24,7 @@ SOURCES = \
 		strings/ft_strnstr.c \
 		strings/ft_substr.c \
 		strings/ft_strjoin.c \
+		strings/ft_strnjoin.c \
 		strings/ft_strtrim.c \
 		strings/ft_split.c \
 		strings/ft_strmapi.c \
