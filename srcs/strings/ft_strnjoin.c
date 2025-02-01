@@ -6,31 +6,42 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:55:36 by asene             #+#    #+#             */
-/*   Updated: 2024/12/30 15:56:41 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 02:16:25 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strnjoin(char **strs, unsigned int size, char *sep)
+static unsigned int	ft_strnjoin_len(char **strs, unsigned int size, char *sep)
 {
 	unsigned int	i;
 	unsigned int	len;
-	char			*result;
 
-	i = 0;
 	len = 1;
+	i = 0;
 	while (i < size)
 		len += ft_strlen(strs[i++]);
 	if (size != 0)
 		len += (size - 1) * ft_strlen(sep);
+	return (len);
+}
+
+char	*ft_strnjoin(char **strs, unsigned int size, char *sep)
+{
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	len;
+	char			*result;
+
+	len = ft_strnjoin_len(strs, size, sep);
 	result = ft_calloc(len, sizeof(char));
 	i = 0;
+	j = 0;
 	while (i < size)
 	{
 		if (i != 0)
-			ft_strlcat(result, sep, len);
-		ft_strlcat(result, strs[i++], len);
+			j += ft_strlcpy(&result[j], sep, len - j);
+		j += ft_strlcpy(&result[j], strs[i++], len - j);
 	}
 	return (result);
 }
