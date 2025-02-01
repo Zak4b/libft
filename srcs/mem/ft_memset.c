@@ -6,15 +6,14 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:26 by asene             #+#    #+#             */
-/*   Updated: 2024/12/25 19:33:04 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:06:48 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <stdint.h>
 
-// fills n bytes of the memory area pointed to by s with the constant byte c
-// return a pointer to the matching byte or NULL
+// Fills `n` bytes of `s` with the byte `c`
 void	*ft_memset(void *dest, int value, size_t n)
 {
 	uint8_t		*d;

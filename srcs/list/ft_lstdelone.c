@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:11:12 by asene             #+#    #+#             */
-/*   Updated: 2024/12/25 19:33:04 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:04:44 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// Delete a single node, applying `del` to its content
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
 	if (del)

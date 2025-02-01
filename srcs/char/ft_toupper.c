@@ -12,6 +12,7 @@
 
 #include <libft.h>
 
+// If `c` is a lowercase letter, returns its uppercase equivalent
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')

@@ -12,6 +12,10 @@
 
 #include <libft.h>
 
+/*
+Copies up to `size` -1 characters from `src` to `dest`
+ensuring null-termination
+*/
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;

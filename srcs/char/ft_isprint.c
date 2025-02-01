@@ -12,6 +12,7 @@
 
 #include <libft.h>
 
+// Checks for a printable character including space
 int	ft_isprint(int c)
 {
 	return (c >= 32 && c <= 126);

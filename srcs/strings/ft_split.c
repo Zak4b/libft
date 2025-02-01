@@ -6,12 +6,13 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:20 by asene             #+#    #+#             */
-/*   Updated: 2025/01/18 18:18:53 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:06:55 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// Free a 
 void	free_split(char **split)
 {
 	int	i;
@@ -43,6 +44,7 @@ static int	count_word(char const *str, char c)
 	return (wc);
 }
 
+// Splits `str` into an array of strings using `c` as a delimiter
 char	**ft_split(char const *str, char c)
 {
 	char	*start;
@@ -62,7 +64,7 @@ char	**ft_split(char const *str, char c)
 			str++;
 		if (str > start)
 		{
-			array[k] = ft_strndup(start, str - start);
+			array[k] = ft_substr(start, 0, str - start);
 			if (array[k++] == NULL)
 				return (free_split(array), NULL);
 		}

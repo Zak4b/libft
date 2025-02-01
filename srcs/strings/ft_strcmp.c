@@ -6,12 +6,13 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:33:57 by asene             #+#    #+#             */
-/*   Updated: 2025/01/18 17:35:37 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:01:53 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// Compares strings `s1` and `s2`
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;

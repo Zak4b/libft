@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 15:55:36 by asene             #+#    #+#             */
-/*   Updated: 2025/02/01 02:16:25 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:00:05 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static unsigned int	ft_strnjoin_len(char **strs, unsigned int size, char *sep)
 	return (len);
 }
 
+// Joins `size` strings from `strs` into a single string, separated by `sep`
 char	*ft_strnjoin(char **strs, unsigned int size, char *sep)
 {
 	unsigned int	i;

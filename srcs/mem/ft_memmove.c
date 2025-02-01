@@ -6,17 +6,14 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:09:22 by asene             #+#    #+#             */
-/*   Updated: 2024/12/25 19:33:04 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:06:42 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <stdint.h>
 
-// copies n bytes from memory area src to memory area dest. The memory areas may
-// overlap: copying takes place as though the bytes in src are first copied into
-// a temporary  array  that  does not overlap src or dest, and the bytes are
-// then copied from the temporary array to dest. returns a pointer to dest.
+// Copies `n` bytes from `src` to `dest` handling overlaps safely
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	uint8_t	*d;

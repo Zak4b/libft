@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-// returns a pointer to the last occurrence of the character c in  the  string
+// Finds the last occurrence of `c` in `s`
 char	*ft_strrchr(const char *s, int c)
 {
 	size_t	index;

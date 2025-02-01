@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:34 by asene             #+#    #+#             */
-/*   Updated: 2025/01/18 17:52:56 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:03:32 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	string_len_from_int(int n)
 	return (len);
 }
 
+// Converts `n` to a string
 char	*ft_itoa(int n)
 {
 	long	long_n;

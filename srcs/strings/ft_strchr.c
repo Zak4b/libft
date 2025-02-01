@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-// returns a pointer to the first occurrence of the character c in the string s
+// Finds the first occurrence of `c` in `s`
 char	*ft_strchr(const char *s, int c)
 {
 	if (s != NULL)

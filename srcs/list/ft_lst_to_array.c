@@ -6,12 +6,13 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:39:23 by asene             #+#    #+#             */
-/*   Updated: 2025/01/18 17:47:25 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 15:19:51 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// Create an array of pointers from a linked list
 void	**ft_lst_to_array(t_list *lst)
 {
 	void	**array;

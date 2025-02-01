@@ -12,6 +12,7 @@
 
 #include <libft.h>
 
+// Allocates and returns a duplicate of `src`
 char	*ft_strdup(const char *src)
 {
 	int		i;

@@ -6,12 +6,13 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:43:34 by asene             #+#    #+#             */
-/*   Updated: 2025/01/18 18:10:58 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:03:21 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// Converts `nptr` to an interger (int)
 int	ft_atoi(const char *nptr)
 {
 	long	result;

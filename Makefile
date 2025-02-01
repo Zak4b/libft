@@ -18,7 +18,6 @@ SOURCES = \
 		strings/ft_strchr.c \
 		strings/ft_strrchr.c \
 		strings/ft_strdup.c \
-		strings/ft_strndup.c \
 		strings/ft_strlcpy.c \
 		strings/ft_strlcat.c \
 		strings/ft_strnstr.c \

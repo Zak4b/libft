@@ -6,12 +6,13 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:11:52 by asene             #+#    #+#             */
-/*   Updated: 2025/02/01 02:28:14 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:04:50 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
+// Applies function `f` to each node’s content
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (!lst || !f)
