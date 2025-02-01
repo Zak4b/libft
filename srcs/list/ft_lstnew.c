@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:58:54 by asene             #+#    #+#             */
-/*   Updated: 2025/02/01 16:05:24 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:40:13 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(void *content)
 	new_list = malloc(sizeof(t_list));
 	if (new_list == NULL)
 		return (NULL);
+	new_list->prev = NULL;
 	new_list->next = NULL;
 	new_list->content = content;
 	return (new_list);

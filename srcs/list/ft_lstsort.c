@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstsort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 15:04:36 by asene             #+#    #+#             */
-/*   Updated: 2025/02/01 16:42:24 by asene            ###   ########.fr       */
+/*   Created: 2025/02/01 17:01:37 by asene             #+#    #+#             */
+/*   Updated: 2025/02/01 19:17:40 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-// Add `new` at the beginning of 'lst
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstsort(t_list *lst, int (*fcmp)(t_list *a, t_list *b))
 {
-	if (*lst == NULL)
-	{
-		*lst = new;
+	t_list		*start;
+	size_t		len;
+	size_t		last;
+
+	if (!lst)
 		return ;
+	start = lst;
+	len = ft_lstsize(lst);
+	while (len)
+	{
+		lst = start;
+		last = len--;
+		while (lst->next && last--)
+		{
+			if (fcmp(lst, lst->next) > 0)
+				ft_memswap(&(lst->content), &(lst->next->content));
+			lst = lst->next;
+		}
 	}
-	(*lst)->prev = new;
-	new->next = *lst;
-	*lst = new;
 }

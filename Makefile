@@ -44,9 +44,12 @@ SOURCES = \
 		ft_putnbr_fd.c \
 		list/ft_lstnew.c \
 		list/ft_lstadd_front.c \
-		list/ft_lstsize.c \
-		list/ft_lstlast.c \
 		list/ft_lstadd_back.c \
+		list/ft_lstadd_before.c \
+		list/ft_lstadd_after.c \
+		list/ft_lstsize.c \
+		list/ft_lstfirst.c \
+		list/ft_lstlast.c \
 		list/ft_lstclear.c \
 		list/ft_lstdelone.c \
 		list/ft_lstclear.c \
