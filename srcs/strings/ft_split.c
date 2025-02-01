@@ -6,7 +6,7 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:36:20 by asene             #+#    #+#             */
-/*   Updated: 2025/02/01 16:06:55 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/01 16:25:39 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,6 @@ void	free_split(char **split)
 	free(split);
 }
 
-static int	count_word(char const *str, char c)
-{
-	int	wc;
-
-	if (!str)
-		return (0);
-	wc = 0;
-	while (*str)
-	{
-		while (*str && *str == c)
-			str++;
-		if (*str)
-			wc++;
-		while (*str && *str != c)
-			str++;
-	}
-	return (wc);
-}
-
 // Splits `str` into an array of strings using `c` as a delimiter
 char	**ft_split(char const *str, char c)
 {
@@ -51,7 +32,7 @@ char	**ft_split(char const *str, char c)
 	int		k;
 	char	**array;
 
-	array = ft_calloc(count_word(str, c) + 1, sizeof(char *));
+	array = ft_calloc(ft_count_word(str, c) + 1, sizeof(char *));
 	if (array == NULL)
 		return (NULL);
 	k = 0;

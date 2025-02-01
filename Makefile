@@ -12,6 +12,7 @@ SOURCES = \
 		char/ft_isspace.c \
 		char/ft_toupper.c \
 		char/ft_tolower.c \
+		strings/ft_count_word.c \
 		strings/ft_strcmp.c \
 		strings/ft_strncmp.c \
 		strings/ft_strlen.c \
