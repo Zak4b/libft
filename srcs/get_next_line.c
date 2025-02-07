@@ -6,89 +6,96 @@
 /*   By: asene <asene@student.42perpignan.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:24:40 by asene             #+#    #+#             */
-/*   Updated: 2024/12/25 20:22:01 by asene            ###   ########.fr       */
+/*   Updated: 2025/02/07 19:01:20 by asene            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "get_next_line.h"
+#include <unistd.h>
 
-static char	*ft_join_and_free(char **s1, char const *s2)
+static size_t	line_lenght(t_list *lst)
 {
-	char	*new_str;
-	int		i;
+	size_t	line_len;
+	char	*newline;
 
-	new_str = malloc(sizeof(char) * (ft_strlen(*s1) + ft_strlen(s2) + 1));
-	if (new_str == NULL)
-		return (NULL);
-	i = 0;
-	while ((*s1)[i])
+	line_len = 0;
+	newline = NULL;
+	while (lst && !newline)
 	{
-		new_str[i] = (*s1)[i];
-		i++;
-	}
-	while (*s2)
-		new_str[i++] = *(s2++);
-	new_str[i] = '\0';
-	free(*s1);
-	return (new_str);
-}
-
-static void	move_buffer(char **buffer, size_t eol_index)
-{
-	char	*temp;
-
-	temp = *buffer;
-	*buffer = ft_strdup(*buffer + eol_index + 1);
-	free(temp);
-}
-
-static size_t	read_file_to_next_line(int fd, char **stash)
-{
-	ssize_t	bytes_read;
-	char	buffer[BUFFER_SIZE + 1];
-	char	*eol;
-
-	eol = ft_strchr(*stash, '\n');
-	while (eol == NULL)
-	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == 0)
-			break ;
-		buffer[bytes_read] = '\0';
-		if (stash && *stash)
-			*stash = ft_join_and_free(stash, buffer);
+		newline = ft_strchr(lst->content, '\n');
+		if (newline == NULL)
+			line_len += ft_strlen(lst->content);
 		else
-			*stash = ft_strdup(buffer);
-		eol = ft_strchr(*stash, '\n');
+			line_len += newline - (char *)lst->content +1;
+		lst = lst->next;
 	}
-	if (bytes_read == 0)
-		eol = *stash + ft_strlen(*stash) - 1;
-	return (eol - *stash);
+	return (line_len);
+}
+
+static char	*extract_line(t_list **stash)
+{
+	size_t	i;
+	size_t	j;
+	size_t	len;
+	char	*line;
+	void	*tmp;
+
+	len = line_lenght(*stash);
+	line = ft_calloc(len +1, sizeof(char));
+	i = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (i < len && ((char *)(*stash)->content)[j])
+			line[i++] = ((char *)(*stash)->content)[j++];
+		if (ft_strchr("\n",((char *)(*stash)->content)[j]) != NULL)
+		{
+			tmp = *stash;
+			(*stash) = (*stash)->next;
+			ft_lstdelone(tmp, free);
+		}
+	}
+	if (*stash)
+	{	
+		tmp = (*stash)->content;
+		(*stash)->content = ft_substr((*stash)->content, j, BUFFER_SIZE);
+		free(tmp);
+	}
+	return (line);
+}
+
+static void	gnl_readline(int fd, t_list **stash)
+{
+	char	*read_buffer;
+
+	while (1)
+	{
+		read_buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		if (read(fd, read_buffer, BUFFER_SIZE) == 0)
+		{
+			free(read_buffer);
+			break ;
+		}
+		ft_lstadd_back(stash, ft_lstnew(read_buffer));
+		if (ft_strchr(read_buffer, '\n'))
+			break;
+	}
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*stash = NULL;
-	char		*line;
-	int			eol;
+	static t_list	*stash = NULL;
+	char			*line;
 
 	if (fd < 0 || read(fd, 0, 0) < 0)
 	{
-		if (stash)
-		{
-			free(stash);
-			stash = NULL;
-		}
+		ft_lstclear(&stash, free);
 		return (NULL);
 	}
-	eol = read_file_to_next_line(fd, &stash);
-	if (eol >= 0)
-	{
-		line = ft_substr(stash, 0, eol + 1);
-		move_buffer(&stash, eol);
-		return (line);
-	}
-	else
-		return (free(stash), stash = NULL, NULL);
+	gnl_readline(fd, &stash);
+	if (stash == NULL)
+		return (NULL);
+	line = extract_line(&stash);
+	return (line);
 }
