@@ -1,7 +1,7 @@
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror -I.
+SRCDIR = srcs
 OBJDIR = obj
-SUB_DIRS = $(addprefix $(OBJDIR)/, char conversions ft_printf list mem strings)
 
 SOURCES = \
 		char/ft_isalpha.c \
@@ -66,11 +66,8 @@ OBJS = $(addprefix $(OBJDIR)/, $(SOURCES:.c=.o))
 $(NAME): $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
-	mkdir -p $(SUB_DIRS)
-
-$(OBJDIR)/%.o: srcs/%.c | $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(dir $@)
 	@cc $(FLAGS) -c $< -o $@
 
 all: $(NAME)
